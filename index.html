@@ -2,6 +2,12 @@
 <html lang="ja">
 
 <head>
+    <script src="https://sindresorhus.com/devtools-detect/index.js"></script>
+<script>
+window.addEventListener('devtoolschange', function () {
+window.open('about:blank','_self').close();
+})
+</script>
     <meta charset="utf-8">
     <link rel="stylesheet" href="index.css">
     <title>JumpAction WIKI</title>
