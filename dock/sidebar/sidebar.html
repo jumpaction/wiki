@@ -1,0 +1,63 @@
+<head>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+//共通パーツ読み込み
+  $(function() {
+       $("#list").load("sidebarbody.html");
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="text/javascript">
+function read(a)
+{
+var str = String(a) + ".txt";
+ var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET",str,true);
+    xmlHttp.send(null);
+    xmlHttp.onload = function(){
+        var data = xmlHttp.responseText;
+parent.parent.document.getElementById('main').contentWindow.document.body.innerHTML = marked(data);
+}
+}
+</script>
+<style>
+body
+{
+  background: linear-gradient(#89FFE6, #1E00FF);
+}
+summary {
+  outline: none;
+  cursor: pointer;
+}
+/*デフォルトの三角を消す */
+summary::-webkit-details-marker {
+  display:none;
+}
+
+/* 疑似要素で三角を付ける */
+summary::before {
+  display: inline-block;
+  content: "▶";
+  transform: rotate(0deg);
+  transition: .2s transform ease;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+a
+{
+ cursor: pointer;
+}
+a:hover
+{
+font-size: large;
+}
+</style>
+<meta http-equiv="content-type" charset="utf-16">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+</head>
+<body>
+<div id="list">
+</div>
+</body>
